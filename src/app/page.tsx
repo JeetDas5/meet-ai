@@ -47,9 +47,10 @@ export default function Home() {
   };
 
   if (session) {
+    console.log("session user", session.user)
     return (
       <div className="max-w-xl mx-auto m-10 p-4 flex flex-col gap-4">
-        <p>Logged in as {session.user.email}</p>
+        <p>Logged in as {session.user.name || session.user.email}</p>
         <Button onClick={() => authClient.signOut()}>Sign Out</Button>
       </div>
     );

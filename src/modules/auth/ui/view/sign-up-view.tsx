@@ -74,6 +74,26 @@ export const SignUpView = () => {
     );
   };
 
+  const onSocial = (provider: "github" | "google") => {
+    setError(null);
+    setPending(true);
+    authClient.signIn.social(
+      {
+        provider: provider,
+      },
+      {
+        onSuccess: () => {
+          router.push("/");
+          setPending(false);
+        },
+        onError: ({ error }) => {
+          setError(error.message);
+          setPending(false);
+        },
+      }
+    );
+  };
+
   return (
     <div className="flex flex-col gap-4">
       <Card className="overflow-hidden p-0">
@@ -194,6 +214,7 @@ export const SignUpView = () => {
                     variant="outline"
                     disabled={pending}
                     className="w-full cursor-pointer"
+                    onClick={() => onSocial("google")}
                   >
                     Google
                   </Button>
@@ -202,6 +223,7 @@ export const SignUpView = () => {
                     variant="outline"
                     disabled={pending}
                     className="w-full cursor-pointer"
+                    onClick={() => onSocial("github")}
                   >
                     GitHub
                   </Button>
