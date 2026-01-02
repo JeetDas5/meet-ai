@@ -4,7 +4,9 @@ import { z } from "zod";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { OctagonAlertIcon } from "lucide-react";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "@/components/ui/input";
@@ -19,9 +21,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { Alert, AlertTitle } from "@/components/ui/alert";
 
 const formSchema = z
   .object({
@@ -38,9 +39,10 @@ const formSchema = z
   });
 
 export const SignUpView = () => {
-  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -60,11 +62,13 @@ export const SignUpView = () => {
         name: data.name,
         email: data.email,
         password: data.password,
+
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
-          router.push("/");
           setPending(false);
+          router.push("/");
         },
         onError: ({ error }) => {
           setError(error.message);
@@ -80,10 +84,10 @@ export const SignUpView = () => {
     authClient.signIn.social(
       {
         provider: provider,
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
-          router.push("/");
           setPending(false);
         },
         onError: ({ error }) => {
@@ -216,7 +220,7 @@ export const SignUpView = () => {
                     className="w-full cursor-pointer"
                     onClick={() => onSocial("google")}
                   >
-                    Google
+                    <FaGoogle />
                   </Button>
                   <Button
                     type="button"
@@ -225,7 +229,7 @@ export const SignUpView = () => {
                     className="w-full cursor-pointer"
                     onClick={() => onSocial("github")}
                   >
-                    GitHub
+                    <FaGithub />
                   </Button>
                 </div>
                 <div className="text-center text-sm text-muted-foreground">
