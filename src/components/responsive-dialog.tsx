@@ -1,6 +1,12 @@
 "use client";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Dialog, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogContent,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import {
   Drawer,
   DrawerContent,
@@ -8,7 +14,6 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
-import { DialogContent, DialogDescription } from "@radix-ui/react-dialog";
 
 interface ResponsiveDialogProps {
   title: string;
@@ -28,7 +33,12 @@ export const ResponsiveDialog: React.FC<ResponsiveDialogProps> = ({
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
-      <Drawer open={open} onOpenChange={onOpenChange} dismissible={true} shouldScaleBackground>
+      <Drawer
+        open={open}
+        onOpenChange={onOpenChange}
+        dismissible={true}
+        shouldScaleBackground
+      >
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>{title}</DrawerTitle>

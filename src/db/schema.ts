@@ -103,5 +103,5 @@ export const agents = pgTable("agents", {
     .references(() => user.id, { onDelete: "cascade" }),
   instructions: text("instructions").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at"), 
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });

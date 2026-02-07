@@ -11,35 +11,7 @@ export const AgentsView = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Agents</h1>
-      <div className="space-y-4">
-        {data && data.length > 0 ? (
-          data.map((agent: any) => (
-            <div
-              key={agent.id}
-              className="border rounded-lg p-4 bg-card text-card-foreground"
-            >
-              <h2 className="font-semibold text-lg">{agent.name}</h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                {agent.instructions}
-              </p>
-              <div className="text-xs text-muted-foreground mt-2">
-                User ID: {agent.userId}
-              </div>
-              <div className="text-xs text-muted-foreground">
-                Created:{" "}
-                {new Date(agent.createdAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "2-digit",
-                  day: "2-digit",
-                })}
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-muted-foreground">No agents found</p>
-        )}
-      </div>
+      <div className="space-y-4">{JSON.stringify(data, null, 2)}</div>
     </div>
   );
 };
