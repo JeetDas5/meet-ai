@@ -49,8 +49,6 @@ export const AgentsViewLoading = () => {
     <LoadingState
       title="Loading agents"
       description="This may take a few seconds"
-      onEdit={() => {}}
-      onRemove={() => {}}
     />
   );
 };
