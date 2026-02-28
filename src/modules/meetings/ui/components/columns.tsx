@@ -12,6 +12,7 @@ import {
   LoaderIcon,
   CircleArrowUpIcon,
   CircleXIcon,
+  ClockFadingIcon,
 } from "lucide-react";
 import { GeneratedAvatar } from "@/components/generated-avatar";
 
@@ -62,22 +63,52 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
             variant="botttsNeutral"
             className="size-6 rounded-full"
           />
+          <span className="text-sm text-muted-foreground">
+            {row.original.startedAt
+              ? format(row.original.startedAt, "MMM d")
+              : ""}
+          </span>
         </div>
       </div>
     ),
   },
+
   {
-    accessorKey: "meetingCount",
-    header: "Meetings",
-    cell: ({ row }) => (
-      <Badge
-        variant="outline"
-        className="flex items-center gap-x-2 [&>svg]:size-4"
-      >
-        <VideoIcon className="text-blue-700" />
-        {row.original.meetingCount}{" "}
-        {row.original.meetingCount === 1 ? "Meeting" : "Meetings"}
-      </Badge>
-    ),
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }) => {
+      const Icon =
+        statusIconMap[row.original.status as keyof typeof statusIconMap];
+      return (
+        <Badge
+          variant="outline"
+          className={cn(
+            "text-muted-foreground capitalize gap-x-2 [&>svg]:size-4",
+            statusColorMap[row.original.status as keyof typeof statusColorMap]
+          )}
+        >
+          <Icon
+            className={cn(
+              row.original.status === "processing" && "animate-spin"
+            )}
+          />
+          {row.original.status}
+        </Badge>
+      );
+    },
+  },
+  {
+    accessorKey: "duration",
+    header: "Duration",
+    cell: ({ row }) => {
+      return (
+        <Badge variant="outline" className="capitalize gap-x-2 [&>svg]:size-4">
+          <ClockFadingIcon className="text-blue-700" />
+          {row.original.duration
+            ? formatDuration(row.original.duration)
+            : "No Duration"}
+        </Badge>
+      );
+    },
   },
 ];
