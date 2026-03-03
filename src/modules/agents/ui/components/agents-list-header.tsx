@@ -6,7 +6,7 @@ import { DEFAULT_PAGE } from "@/constants";
 import { Button } from "@/components/ui/button";
 import { NewAgentDialog } from "./new-agent-dialog";
 import { AgentsSearchFilters } from "./agent-search-filter";
-import { useAgentFilters } from "../../server/hooks/use-agents-filter";
+import { useAgentFilters } from "../../hooks/use-agents-filter";
 
 export const AgentsListHeader = () => {
   const [filters, setFilters] = useAgentFilters();

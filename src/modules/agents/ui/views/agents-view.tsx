@@ -11,7 +11,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 
 import { columns } from "../components/columns";
 import { DataPagination } from "../components/data-pagination";
-import { useAgentFilters } from "../../server/hooks/use-agents-filter";
+import { useAgentFilters } from "../../hooks/use-agents-filter";
 
 export const AgentsView = () => {
   const [filters, setFilters] = useAgentFilters();
