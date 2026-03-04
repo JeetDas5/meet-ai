@@ -4,7 +4,7 @@ import { useTRPC } from "@/trpc/client";
 import { useRouter } from "next/navigation";
 import { ErrorState } from "@/components/error-state";
 import { LoadingState } from "@/components/loading-state";
-import { AgentIdViewHeader } from "../agent-id-view-header";
+import { AgentIdViewHeader } from "../components/agent-id-view-header";
 import {
   useMutation,
   useQueryClient,
