@@ -3,13 +3,21 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { HomeView } from "@/modules/home/ui/home-view";
 
+
+
+
 const Page = async () => {
+
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });
   if (!session) {
     redirect("/sign-in");
   }
+
+
+
   return (
     <div>
       <HomeView />
