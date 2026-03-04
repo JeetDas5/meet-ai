@@ -40,8 +40,8 @@ export const AgentsListHeader = () => {
                 Clear
               </Button>
             )}
-            <ScrollBar orientation="horizontal" />
           </div>
+            <ScrollBar orientation="horizontal" />
         </ScrollArea>
       </div>
     </>
