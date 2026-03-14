@@ -1,0 +1,25 @@
+"use client";
+
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
+export const CallEnded = () => {
+  return (
+    <div className="flex flex-col items-center justify-center bg-radial h-full from-sidebar-accent to-sidebar">
+      <div className="py-4 px-8 flex flex-1 items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-y-6 bg-background rounded-lg shadow-sm p-10">
+          <div className="flex flex-col gap-y-2 text-center">
+            <h6 className="text-lg font-medium">You have ended the call</h6>
+            <p className="text-sm">Summary will appear in few minutes</p>
+          </div>
+
+          <div className="flex gap-x-2 justify-between w-full">
+            <Button asChild variant="ghost">
+              <Link href="/meetings">Back to Meetings</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
