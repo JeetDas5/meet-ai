@@ -30,12 +30,12 @@ export const meetingsRouter = createTRPCRouter({
     ]);
 
     const expirationTime = Math.floor(Date.now() / 1000) + 60 * 60;
-    const issuedAt = Math.floor(Date.now() / 1000) - 60;
+    const issuedAt = Math.floor(Date.now() / 1000) - 60; // backdate 60s to handle clock skew
 
     const token = streamVideo.generateUserToken({
       user_id: ctx.auth.user.id,
       exp: expirationTime,
-      validity_in_seconds: issuedAt,
+      iat: issuedAt,
     });
 
     return token;
