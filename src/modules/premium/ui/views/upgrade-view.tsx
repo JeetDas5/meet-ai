@@ -90,7 +90,6 @@ export const UpgradeView = () => {
           })}
         </div>
       </div>
-      ge
     </div>
   );
 };
