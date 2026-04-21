@@ -1,6 +1,7 @@
 # MeetAI
 
 MeetAI is a full-stack AI meeting platform that runs realtime voice sessions with custom agents, then automatically generates transcript-based summaries and follow-up chat assistants. The project is built with Next.js 16, Stream Video and Chat, OpenAI, Inngest, Better Auth, and Polar for billing.
+
 It supports authenticated workspaces, reusable AI agents, live video sessions, transcript processing, and post-meeting chat on top of the generated summary. We have payment integration with Polar(in sandbox mode in the current configuration) to demonstrate subscription management, but the core meeting assistant features do not require an active subscription to function.
 
 ## Deployed URL
@@ -127,7 +128,7 @@ High-level interaction sequence:
 ### 2. Install Dependencies
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
 ### 3. Configure Environment
